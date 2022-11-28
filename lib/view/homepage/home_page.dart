@@ -2,8 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:new_spotifyui_api/view/widgets/custom_app_bar.dart';
+import 'package:new_spotifyui_api/viewmodel/home_view_model.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:contained_tab_bar_view/contained_tab_bar_view.dart';
+import 'package:provider/provider.dart';
 
 import '../../core/constant_color.dart';
 import '../../core/constant_image.dart';
@@ -13,11 +15,25 @@ import 'home_banner_widget.dart';
 import 'home_list_tile_widget.dart';
 import 'home_tabbar_view_widget.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    final homeviewmodel =
+        Provider.of<HomeViewModelProvider>(context, listen: false);
+    homeviewmodel.getDataNewReleasess();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final onTapp = Provider.of<HomeViewModelProvider>(context, listen: false);
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: CustomAppBar(
@@ -47,12 +63,14 @@ class HomePage extends StatelessWidget {
                     TabsText(textt: "Podcast"),
                   ],
                   views: const [
-                    TabsViews(),
-                    TabsViews(),
-                    TabsViews(),
-                    TabsViews(),
+                    News(),
+                    Vvideoss(),
+                    Artists(),
+                    Podcasts(),
                   ],
-                  onChange: (p0) {},
+                  onChange: (id) {
+                    onTapp.setCurrentIndex(id);
+                  },
                 ),
               ),
               sizedBox4H(),
