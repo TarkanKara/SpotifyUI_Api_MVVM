@@ -65,8 +65,8 @@ class _HomePageState extends State<HomePage> {
                   ],
                   views: const [
                     News(),
-                    Vvideoss(),
                     Artists(),
+                    Vvideoss(),
                     Podcasts(),
                   ],
                   onChange: (id) {

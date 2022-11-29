@@ -6,6 +6,7 @@ import 'package:dio/dio.dart';
 import 'package:new_spotifyui_api/base/dio_client.dart';
 import 'package:new_spotifyui_api/models/home_page_models/get_new_releases.dart';
 import 'package:new_spotifyui_api/models/home_page_models/get_several_artist.dart';
+import 'package:new_spotifyui_api/models/home_page_models/get_several_episodes.dart';
 
 class HomePageServices extends BaseServicesDio {
   //Get New Releases Models
@@ -16,7 +17,7 @@ class HomePageServices extends BaseServicesDio {
       final response = await dio.get("browse/new-releases", queryParameters: {
         "country": "TR",
         "limit": 20,
-        'offset': 0,
+        'offset': 30,
       });
       //print(response.data);
       return getNewReleases = GetNewReleases.fromJson(response.data);
@@ -35,8 +36,25 @@ class HomePageServices extends BaseServicesDio {
         "ids":
             "2CIMQHirSU0MQqyYHq0eOx,57dN52uHvrHOxijzpIgu3E,1vCWHaC5f2uS3yhpwWbIA6",
       });
-      print(response.data);
+      //print(response.data);
       return getSeveralArtist = GetSeveralArtist.fromJson(response.data);
+    } catch (e) {
+      log(e.toString());
+    }
+    return null;
+  }
+
+  //Get Several Episodes (Podcasts)
+  Future<GetSeveralEpisodes?> getSeveralEpisodes() async {
+    GetSeveralEpisodes getSeveralEpisodes;
+    Response response;
+    try {
+      final response = await dio.get("episodes", queryParameters: {
+        "ids": "77o6BIVlYM3msb4MMIL1jH,0Q86acNRm6V9GYx55SXKwf",
+        "market": "TR",
+      });
+      print(response.data);
+      return getSeveralEpisodes = GetSeveralEpisodes.fromJson(response.data);
     } catch (e) {
       log(e.toString());
     }

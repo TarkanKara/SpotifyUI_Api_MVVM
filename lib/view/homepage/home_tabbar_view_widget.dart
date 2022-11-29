@@ -96,8 +96,8 @@ class News extends StatelessWidget {
                           SizedBox(
                             width: 30.w,
                             child: CategoryTextWidget(
-                                text: value.releases!.albums!.items![index].name
-                                    .toString(),
+                                text:
+                                    "Tracks : ${value.releases!.albums!.items![index].totalTracks.toString()}",
                                 fontSize: 15),
                           ),
                         ],
@@ -167,7 +167,7 @@ class Vvideoss extends StatelessWidget {
                           SizedBox(
                             width: 30.w,
                             child: CategoryTextWidget(
-                                text: value.releases!.albums!.items![index].name
+                                text: value.several!.artists![index].name
                                     .toString(),
                                 fontWeight: FontWeight.bold,
                                 fontSize: 16),
@@ -176,7 +176,7 @@ class Vvideoss extends StatelessWidget {
                           SizedBox(
                             width: 30.w,
                             child: CategoryTextWidget(
-                                text: value.releases!.albums!.items![index].name
+                                text: value.several!.artists![index].type
                                     .toString(),
                                 fontSize: 15),
                           ),
@@ -369,14 +369,19 @@ class CategoryTextWidget extends StatelessWidget {
   final double? fontSize;
   @override
   Widget build(BuildContext context) {
-    return Text(
-      text,
-      maxLines: 2,
-      overflow: TextOverflow.ellipsis,
-      style: Theme.of(context)
-          .textTheme
-          .bodyMedium!
-          .copyWith(fontSize: fontSize, fontWeight: fontWeight),
+    return Padding(
+      padding: EdgeInsets.only(top: 0.1.h),
+      child: Center(
+        child: Text(
+          text,
+          maxLines: 2,
+          overflow: TextOverflow.ellipsis,
+          style: Theme.of(context)
+              .textTheme
+              .bodyMedium!
+              .copyWith(fontSize: fontSize, fontWeight: fontWeight),
+        ),
+      ),
     );
   }
 }
