@@ -39,13 +39,13 @@ class News extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<HomeViewModelProvider>(
       builder: (context, value, child) {
-        return value.isLoadingNewRelease
+        return !value.isLoadingNewRelease
             ? SizedBox(
                 height: 28.h,
                 child: ListView.builder(
                   padding: EdgeInsets.zero,
                   scrollDirection: Axis.horizontal,
-                  itemCount: value.getNewReleases!.albums!.items!.length,
+                  itemCount: value.response!.albums!.items!.length,
                   itemBuilder: (context, index) {
                     return Padding(
                       padding: IPadding.homeSongs,
@@ -54,16 +54,22 @@ class News extends StatelessWidget {
                         children: [
                           SizedBox(
                             width: 30.w,
-                            height: 20.h,
+                            height: 15.h,
                             child: Stack(
                               fit: StackFit.loose,
                               children: [
-                                SizedBox(
+                                Container(
                                   width: 30.w,
-                                  child: Image.network(
-                                    value.getNewReleases!.albums!.items![index]
-                                        .images![0].url
-                                        .toString(),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(30),
+                                    image: DecorationImage(
+                                      fit: BoxFit.cover,
+                                      image: NetworkImage(
+                                        value.response!.albums!.items![index]
+                                            .images![0].url
+                                            .toString(),
+                                      ),
+                                    ),
                                   ),
                                 ),
                                 Align(
@@ -77,18 +83,22 @@ class News extends StatelessWidget {
                               ],
                             ),
                           ),
-                          CategoryTextWidget(
-                              text: value
-                                  .getNewReleases!.albums!.items![index].name
-                                  .toString(),
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20),
+                          SizedBox(
+                            width: 30.w,
+                            child: CategoryTextWidget(
+                                text: value.response!.albums!.items![index].name
+                                    .toString(),
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16),
+                          ),
                           const SizedBox(height: 5),
-                          CategoryTextWidget(
-                              text: value
-                                  .getNewReleases!.albums!.items![index].name
-                                  .toString(),
-                              fontSize: 15)
+                          SizedBox(
+                            width: 30.w,
+                            child: CategoryTextWidget(
+                                text: value.response!.albums!.items![index].name
+                                    .toString(),
+                                fontSize: 15),
+                          ),
                         ],
                       ),
                     );
@@ -116,7 +126,7 @@ class Vvideoss extends StatelessWidget {
                 child: ListView.builder(
                   padding: EdgeInsets.zero,
                   scrollDirection: Axis.horizontal,
-                  itemCount: value.getNewReleases!.albums!.items!.length,
+                  itemCount: value.response!.albums!.items!.length,
                   itemBuilder: (context, index) {
                     return Padding(
                       padding: IPadding.homeSongs,
@@ -131,8 +141,8 @@ class Vvideoss extends StatelessWidget {
                               children: [
                                 SizedBox(
                                   width: 30.w,
-                                  child: Image.network(value.getNewReleases!
-                                      .albums!.items![index].images![0].url
+                                  child: Image.network(value.response!.albums!
+                                      .items![index].images![0].url
                                       .toString()),
                                 ),
                                 Align(
@@ -146,17 +156,16 @@ class Vvideoss extends StatelessWidget {
                               ],
                             ),
                           ),
-                           CategoryTextWidget(
-                              text: value
-                                  .getNewReleases!.albums!.items![index].name
+                          CategoryTextWidget(
+                              text: value.response!.albums!.items![index].name
                                   .toString(),
                               fontWeight: FontWeight.bold,
                               fontSize: 20),
                           const SizedBox(height: 5),
-                           CategoryTextWidget(
-                              text: value
-                                  .getNewReleases!.albums!.items![index].name
-                                  .toString(), fontSize: 15)
+                          CategoryTextWidget(
+                              text: value.response!.albums!.items![index].name
+                                  .toString(),
+                              fontSize: 15)
                         ],
                       ),
                     );
@@ -184,7 +193,7 @@ class Artists extends StatelessWidget {
                 child: ListView.builder(
                   padding: EdgeInsets.zero,
                   scrollDirection: Axis.horizontal,
-                  itemCount: value.getNewReleases!.albums!.items!.length,
+                  itemCount: value.response!.albums!.items!.length,
                   itemBuilder: (context, index) {
                     return Padding(
                       padding: IPadding.homeSongs,
@@ -199,8 +208,8 @@ class Artists extends StatelessWidget {
                               children: [
                                 SizedBox(
                                   width: 30.w,
-                                  child: Image.network(value.getNewReleases!
-                                      .albums!.items![index].images![0].url
+                                  child: Image.network(value.response!.albums!
+                                      .items![index].images![0].url
                                       .toString()),
                                 ),
                                 Align(
@@ -248,7 +257,7 @@ class Podcasts extends StatelessWidget {
                 child: ListView.builder(
                   padding: EdgeInsets.zero,
                   scrollDirection: Axis.horizontal,
-                  itemCount: value.getNewReleases!.albums!.items!.length,
+                  itemCount: value.response!.albums!.items!.length,
                   itemBuilder: (context, index) {
                     return Padding(
                       padding: IPadding.homeSongs,
@@ -263,8 +272,8 @@ class Podcasts extends StatelessWidget {
                               children: [
                                 SizedBox(
                                   width: 30.w,
-                                  child: Image.network(value.getNewReleases!
-                                      .albums!.items![index].images![0].url
+                                  child: Image.network(value.response!.albums!
+                                      .items![index].images![0].url
                                       .toString()),
                                 ),
                                 Align(
@@ -312,7 +321,7 @@ class CategoryTextWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
-      maxLines: 1,
+      maxLines: 2,
       overflow: TextOverflow.ellipsis,
       style: Theme.of(context)
           .textTheme

@@ -6,7 +6,7 @@ import '../sevices/home_services.dart';
 class HomeViewModelProvider with ChangeNotifier {
   //
   //
-  GetNewReleases? getNewReleases;
+  GetNewReleases? response = GetNewReleases();
 
   int? currentIndex;
 
@@ -19,7 +19,7 @@ class HomeViewModelProvider with ChangeNotifier {
 
   getDataNewReleasess() async {
     isLoadingNewRelease = true;
-    getNewReleases = await HomePageServices().getNewReleaseData();
+    response = (await HomePageServices().getNewReleaseData())!;
     isLoadingNewRelease = false;
     notifyListeners();
   }

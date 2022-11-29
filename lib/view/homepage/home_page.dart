@@ -50,7 +50,7 @@ class _HomePageState extends State<HomePage> {
               const BannerWidget(),
               sizedBox2H(),
               SizedBox(
-                height: 36.h,
+                height: 34.h,
                 child: ContainedTabBarView(
                   tabBarProperties: const TabBarProperties(
                     indicatorColor: Colors.green,
