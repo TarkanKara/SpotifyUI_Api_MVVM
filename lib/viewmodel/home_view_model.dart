@@ -1,16 +1,19 @@
 import 'package:flutter/cupertino.dart';
 import 'package:new_spotifyui_api/models/home_page_models/get_new_releases.dart';
+import 'package:new_spotifyui_api/models/home_page_models/get_several_artist.dart';
 
 import '../sevices/home_services.dart';
 
 class HomeViewModelProvider with ChangeNotifier {
   //
   //
-  GetNewReleases? response = GetNewReleases();
+  GetNewReleases? releases = GetNewReleases();
+  GetSeveralArtist? several = GetSeveralArtist();
 
   int? currentIndex;
 
-  bool isLoadingNewRelease = true;
+  bool isLoadingNewRelease = false;
+  bool isLoadingSeveralArtists = false;
 
   setCurrentIndex(int id) {
     currentIndex = id;
@@ -19,8 +22,15 @@ class HomeViewModelProvider with ChangeNotifier {
 
   getDataNewReleasess() async {
     isLoadingNewRelease = true;
-    response = (await HomePageServices().getNewReleaseData())!;
+    releases = (await HomePageServices().getNewReleaseData())!;
     isLoadingNewRelease = false;
+    notifyListeners();
+  }
+
+  getDataSeveralArtis() async {
+    isLoadingSeveralArtists = true;
+    several = (await HomePageServices().getSeveralArtists())!;
+    isLoadingSeveralArtists = false;
     notifyListeners();
   }
 }

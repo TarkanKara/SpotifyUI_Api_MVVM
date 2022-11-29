@@ -30,6 +30,7 @@ class TabsText extends StatelessWidget {
   }
 }
 
+// ContainedTabBarView Views New Realeses
 class News extends StatelessWidget {
   const News({
     Key? key,
@@ -45,7 +46,7 @@ class News extends StatelessWidget {
                 child: ListView.builder(
                   padding: EdgeInsets.zero,
                   scrollDirection: Axis.horizontal,
-                  itemCount: value.response!.albums!.items!.length,
+                  itemCount: value.releases!.albums!.items!.length,
                   itemBuilder: (context, index) {
                     return Padding(
                       padding: IPadding.homeSongs,
@@ -65,7 +66,7 @@ class News extends StatelessWidget {
                                     image: DecorationImage(
                                       fit: BoxFit.cover,
                                       image: NetworkImage(
-                                        value.response!.albums!.items![index]
+                                        value.releases!.albums!.items![index]
                                             .images![0].url
                                             .toString(),
                                       ),
@@ -86,7 +87,7 @@ class News extends StatelessWidget {
                           SizedBox(
                             width: 30.w,
                             child: CategoryTextWidget(
-                                text: value.response!.albums!.items![index].name
+                                text: value.releases!.albums!.items![index].name
                                     .toString(),
                                 fontWeight: FontWeight.bold,
                                 fontSize: 16),
@@ -95,7 +96,7 @@ class News extends StatelessWidget {
                           SizedBox(
                             width: 30.w,
                             child: CategoryTextWidget(
-                                text: value.response!.albums!.items![index].name
+                                text: value.releases!.albums!.items![index].name
                                     .toString(),
                                 fontSize: 15),
                           ),
@@ -111,6 +112,7 @@ class News extends StatelessWidget {
   }
 }
 
+//ContainedTabBarView Views Video
 class Vvideoss extends StatelessWidget {
   const Vvideoss({
     Key? key,
@@ -120,13 +122,13 @@ class Vvideoss extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<HomeViewModelProvider>(
       builder: (context, value, child) {
-        return !value.isLoadingNewRelease
+        return !value.isLoadingSeveralArtists
             ? SizedBox(
                 height: 28.h,
                 child: ListView.builder(
                   padding: EdgeInsets.zero,
                   scrollDirection: Axis.horizontal,
-                  itemCount: value.response!.albums!.items!.length,
+                  itemCount: value.several!.artists!.length,
                   itemBuilder: (context, index) {
                     return Padding(
                       padding: IPadding.homeSongs,
@@ -145,11 +147,9 @@ class Vvideoss extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(30),
                                     image: DecorationImage(
                                       fit: BoxFit.cover,
-                                      image: NetworkImage(
-                                        value.response!.albums!.items![index]
-                                            .images![0].url
-                                            .toString(),
-                                      ),
+                                      image: NetworkImage(value.several!
+                                          .artists![index].images![0].url
+                                          .toString()),
                                     ),
                                   ),
                                 ),
@@ -167,7 +167,7 @@ class Vvideoss extends StatelessWidget {
                           SizedBox(
                             width: 30.w,
                             child: CategoryTextWidget(
-                                text: value.response!.albums!.items![index].name
+                                text: value.releases!.albums!.items![index].name
                                     .toString(),
                                 fontWeight: FontWeight.bold,
                                 fontSize: 16),
@@ -176,7 +176,7 @@ class Vvideoss extends StatelessWidget {
                           SizedBox(
                             width: 30.w,
                             child: CategoryTextWidget(
-                                text: value.response!.albums!.items![index].name
+                                text: value.releases!.albums!.items![index].name
                                     .toString(),
                                 fontSize: 15),
                           ),
@@ -192,6 +192,7 @@ class Vvideoss extends StatelessWidget {
   }
 }
 
+//ContainedTabBarView Views Artists
 class Artists extends StatelessWidget {
   const Artists({
     Key? key,
@@ -207,7 +208,7 @@ class Artists extends StatelessWidget {
                 child: ListView.builder(
                   padding: EdgeInsets.zero,
                   scrollDirection: Axis.horizontal,
-                  itemCount: value.response!.albums!.items!.length,
+                  itemCount: value.releases!.albums!.items!.length,
                   itemBuilder: (context, index) {
                     return Padding(
                       padding: IPadding.homeSongs,
@@ -227,7 +228,7 @@ class Artists extends StatelessWidget {
                                     image: DecorationImage(
                                       fit: BoxFit.cover,
                                       image: NetworkImage(
-                                        value.response!.albums!.items![index]
+                                        value.releases!.albums!.items![index]
                                             .images![0].url
                                             .toString(),
                                       ),
@@ -248,7 +249,7 @@ class Artists extends StatelessWidget {
                           SizedBox(
                             width: 30.w,
                             child: CategoryTextWidget(
-                                text: value.response!.albums!.items![index].name
+                                text: value.releases!.albums!.items![index].name
                                     .toString(),
                                 fontWeight: FontWeight.bold,
                                 fontSize: 16),
@@ -257,7 +258,7 @@ class Artists extends StatelessWidget {
                           SizedBox(
                             width: 30.w,
                             child: CategoryTextWidget(
-                                text: value.response!.albums!.items![index].name
+                                text: value.releases!.albums!.items![index].name
                                     .toString(),
                                 fontSize: 15),
                           ),
@@ -273,6 +274,7 @@ class Artists extends StatelessWidget {
   }
 }
 
+//ContainedTabBarView Views Podcasts
 class Podcasts extends StatelessWidget {
   const Podcasts({
     Key? key,
@@ -288,7 +290,7 @@ class Podcasts extends StatelessWidget {
                 child: ListView.builder(
                   padding: EdgeInsets.zero,
                   scrollDirection: Axis.horizontal,
-                  itemCount: value.response!.albums!.items!.length,
+                  itemCount: value.releases!.albums!.items!.length,
                   itemBuilder: (context, index) {
                     return Padding(
                       padding: IPadding.homeSongs,
@@ -308,7 +310,7 @@ class Podcasts extends StatelessWidget {
                                     image: DecorationImage(
                                       fit: BoxFit.cover,
                                       image: NetworkImage(
-                                        value.response!.albums!.items![index]
+                                        value.releases!.albums!.items![index]
                                             .images![0].url
                                             .toString(),
                                       ),
@@ -329,7 +331,7 @@ class Podcasts extends StatelessWidget {
                           SizedBox(
                             width: 30.w,
                             child: CategoryTextWidget(
-                                text: value.response!.albums!.items![index].name
+                                text: value.releases!.albums!.items![index].name
                                     .toString(),
                                 fontWeight: FontWeight.bold,
                                 fontSize: 16),
@@ -338,7 +340,7 @@ class Podcasts extends StatelessWidget {
                           SizedBox(
                             width: 30.w,
                             child: CategoryTextWidget(
-                                text: value.response!.albums!.items![index].name
+                                text: value.releases!.albums!.items![index].name
                                     .toString(),
                                 fontSize: 15),
                           ),
