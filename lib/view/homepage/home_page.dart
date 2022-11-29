@@ -29,6 +29,7 @@ class _HomePageState extends State<HomePage> {
         Provider.of<HomeViewModelProvider>(context, listen: false);
     homeviewmodel.getDataNewReleasess();
     homeviewmodel.getDataSeveralArtis();
+    homeviewmodel.getDataSeveralEpisodes();
     super.initState();
   }
 

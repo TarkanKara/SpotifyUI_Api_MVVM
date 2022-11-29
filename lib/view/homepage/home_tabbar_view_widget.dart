@@ -284,13 +284,13 @@ class Podcasts extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<HomeViewModelProvider>(
       builder: (context, value, child) {
-        return !value.isLoadingNewRelease
+        return !value.isLoadingEpisodes
             ? SizedBox(
                 height: 28.h,
                 child: ListView.builder(
                   padding: EdgeInsets.zero,
                   scrollDirection: Axis.horizontal,
-                  itemCount: value.releases!.albums!.items!.length,
+                  itemCount: value.episodes.episodes!.length,
                   itemBuilder: (context, index) {
                     return Padding(
                       padding: IPadding.homeSongs,
@@ -310,7 +310,7 @@ class Podcasts extends StatelessWidget {
                                     image: DecorationImage(
                                       fit: BoxFit.cover,
                                       image: NetworkImage(
-                                        value.releases!.albums!.items![index]
+                                        value.episodes.episodes![index]
                                             .images![0].url
                                             .toString(),
                                       ),
@@ -331,7 +331,7 @@ class Podcasts extends StatelessWidget {
                           SizedBox(
                             width: 30.w,
                             child: CategoryTextWidget(
-                                text: value.releases!.albums!.items![index].name
+                                text: value.episodes.episodes![index].name
                                     .toString(),
                                 fontWeight: FontWeight.bold,
                                 fontSize: 16),
@@ -340,7 +340,7 @@ class Podcasts extends StatelessWidget {
                           SizedBox(
                             width: 30.w,
                             child: CategoryTextWidget(
-                                text: value.releases!.albums!.items![index].name
+                                text: value.episodes.episodes![index].name
                                     .toString(),
                                 fontSize: 15),
                           ),
