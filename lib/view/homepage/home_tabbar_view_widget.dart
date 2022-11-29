@@ -120,7 +120,7 @@ class Vvideoss extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<HomeViewModelProvider>(
       builder: (context, value, child) {
-        return value.isLoadingNewRelease
+        return !value.isLoadingNewRelease
             ? SizedBox(
                 height: 28.h,
                 child: ListView.builder(
@@ -135,15 +135,23 @@ class Vvideoss extends StatelessWidget {
                         children: [
                           SizedBox(
                             width: 30.w,
-                            height: 20.h,
+                            height: 15.h,
                             child: Stack(
                               fit: StackFit.loose,
                               children: [
-                                SizedBox(
+                                Container(
                                   width: 30.w,
-                                  child: Image.network(value.response!.albums!
-                                      .items![index].images![0].url
-                                      .toString()),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(30),
+                                    image: DecorationImage(
+                                      fit: BoxFit.cover,
+                                      image: NetworkImage(
+                                        value.response!.albums!.items![index]
+                                            .images![0].url
+                                            .toString(),
+                                      ),
+                                    ),
+                                  ),
                                 ),
                                 Align(
                                   alignment: Alignment.bottomRight,
@@ -156,16 +164,22 @@ class Vvideoss extends StatelessWidget {
                               ],
                             ),
                           ),
-                          CategoryTextWidget(
-                              text: value.response!.albums!.items![index].name
-                                  .toString(),
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20),
+                          SizedBox(
+                            width: 30.w,
+                            child: CategoryTextWidget(
+                                text: value.response!.albums!.items![index].name
+                                    .toString(),
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16),
+                          ),
                           const SizedBox(height: 5),
-                          CategoryTextWidget(
-                              text: value.response!.albums!.items![index].name
-                                  .toString(),
-                              fontSize: 15)
+                          SizedBox(
+                            width: 30.w,
+                            child: CategoryTextWidget(
+                                text: value.response!.albums!.items![index].name
+                                    .toString(),
+                                fontSize: 15),
+                          ),
                         ],
                       ),
                     );
@@ -202,15 +216,23 @@ class Artists extends StatelessWidget {
                         children: [
                           SizedBox(
                             width: 30.w,
-                            height: 20.h,
+                            height: 15.h,
                             child: Stack(
                               fit: StackFit.loose,
                               children: [
-                                SizedBox(
+                                Container(
                                   width: 30.w,
-                                  child: Image.network(value.response!.albums!
-                                      .items![index].images![0].url
-                                      .toString()),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(30),
+                                    image: DecorationImage(
+                                      fit: BoxFit.cover,
+                                      image: NetworkImage(
+                                        value.response!.albums!.items![index]
+                                            .images![0].url
+                                            .toString(),
+                                      ),
+                                    ),
+                                  ),
                                 ),
                                 Align(
                                   alignment: Alignment.bottomRight,
@@ -223,13 +245,22 @@ class Artists extends StatelessWidget {
                               ],
                             ),
                           ),
-                          const CategoryTextWidget(
-                              text: "Bad Guy",
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20),
+                          SizedBox(
+                            width: 30.w,
+                            child: CategoryTextWidget(
+                                text: value.response!.albums!.items![index].name
+                                    .toString(),
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16),
+                          ),
                           const SizedBox(height: 5),
-                          const CategoryTextWidget(
-                              text: "Billie Eilish", fontSize: 15)
+                          SizedBox(
+                            width: 30.w,
+                            child: CategoryTextWidget(
+                                text: value.response!.albums!.items![index].name
+                                    .toString(),
+                                fontSize: 15),
+                          ),
                         ],
                       ),
                     );
@@ -266,15 +297,23 @@ class Podcasts extends StatelessWidget {
                         children: [
                           SizedBox(
                             width: 30.w,
-                            height: 20.h,
+                            height: 15.h,
                             child: Stack(
                               fit: StackFit.loose,
                               children: [
-                                SizedBox(
+                                Container(
                                   width: 30.w,
-                                  child: Image.network(value.response!.albums!
-                                      .items![index].images![0].url
-                                      .toString()),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(30),
+                                    image: DecorationImage(
+                                      fit: BoxFit.cover,
+                                      image: NetworkImage(
+                                        value.response!.albums!.items![index]
+                                            .images![0].url
+                                            .toString(),
+                                      ),
+                                    ),
+                                  ),
                                 ),
                                 Align(
                                   alignment: Alignment.bottomRight,
@@ -287,13 +326,22 @@ class Podcasts extends StatelessWidget {
                               ],
                             ),
                           ),
-                          const CategoryTextWidget(
-                              text: "Bad Guy",
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20),
+                          SizedBox(
+                            width: 30.w,
+                            child: CategoryTextWidget(
+                                text: value.response!.albums!.items![index].name
+                                    .toString(),
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16),
+                          ),
                           const SizedBox(height: 5),
-                          const CategoryTextWidget(
-                              text: "Billie Eilish", fontSize: 15)
+                          SizedBox(
+                            width: 30.w,
+                            child: CategoryTextWidget(
+                                text: value.response!.albums!.items![index].name
+                                    .toString(),
+                                fontSize: 15),
+                          ),
                         ],
                       ),
                     );
