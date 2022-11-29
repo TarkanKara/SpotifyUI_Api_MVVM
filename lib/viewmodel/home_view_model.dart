@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:flutter/cupertino.dart';
 import 'package:new_spotifyui_api/models/home_page_models/get_artists_top_tracks.dart';
 import 'package:new_spotifyui_api/models/home_page_models/get_new_releases.dart';
@@ -15,6 +17,7 @@ class HomeViewModelProvider with ChangeNotifier {
   GetArtistTopTracks topTracks = GetArtistTopTracks();
 
   int? currentIndex;
+  String? user_id;
 
   bool isLoadingNewRelease = false;
   bool isLoadingSeveralArtists = false;
@@ -26,11 +29,16 @@ class HomeViewModelProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  setAlbumsId(String? id) {
+    user_id = id;
+    notifyListeners();
+    getDataArtistsTopTracks(userId: id);
+  }
+
   getDataNewReleasess() async {
     isLoadingNewRelease = true;
     releases = (await HomePageServices().getNewReleaseData())!;
     isLoadingNewRelease = false;
-
     notifyListeners();
   }
 
@@ -53,7 +61,7 @@ class HomeViewModelProvider with ChangeNotifier {
     topTracks = (await HomePageServices()
         .getArtistTopTracks(id_artistTopTracks: userId))!;
     isLoadingTopTracks = true;
-    getDataArtistsTopTracks(userId: several!.artists![0].id);
+    //getDataArtistsTopTracks(userId: several!.artists![0].id);
     print(userId);
     notifyListeners();
   }

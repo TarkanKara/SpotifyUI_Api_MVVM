@@ -50,58 +50,67 @@ class News extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return Padding(
                       padding: IPadding.homeSongs,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(
-                            width: 30.w,
-                            height: 15.h,
-                            child: Stack(
-                              fit: StackFit.loose,
-                              children: [
-                                Container(
-                                  width: 30.w,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(30),
-                                    image: DecorationImage(
-                                      fit: BoxFit.cover,
-                                      image: NetworkImage(
-                                        value.releases!.albums!.items![index]
-                                            .images![0].url
-                                            .toString(),
+                      child: GestureDetector(
+                        onTap: () {
+                          value.setAlbumsId(
+                            value.releases!.albums!.items![index].artists![0].id
+                                .toString(),
+                          );
+                        },
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(
+                              width: 30.w,
+                              height: 15.h,
+                              child: Stack(
+                                fit: StackFit.loose,
+                                children: [
+                                  Container(
+                                    width: 30.w,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(30),
+                                      image: DecorationImage(
+                                        fit: BoxFit.cover,
+                                        image: NetworkImage(
+                                          value.releases!.albums!.items![index]
+                                              .images![0].url
+                                              .toString(),
+                                        ),
                                       ),
                                     ),
                                   ),
-                                ),
-                                Align(
-                                  alignment: Alignment.bottomRight,
-                                  child: CircleAvatar(
-                                    radius: 15,
-                                    backgroundColor: Icolor.homePlay,
-                                    child: Image.asset(Iimage.playbtn),
+                                  Align(
+                                    alignment: Alignment.bottomRight,
+                                    child: CircleAvatar(
+                                      radius: 15,
+                                      backgroundColor: Icolor.homePlay,
+                                      child: Image.asset(Iimage.playbtn),
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
-                          ),
-                          SizedBox(height: 1.h),
-                          SizedBox(
-                            width: 30.w,
-                            child: CategoryTextWidget(
-                                text: value.releases!.albums!.items![index].name
-                                    .toString(),
-                                fontWeight: FontWeight.bold,
-                                fontSize: 14),
-                          ),
-                          const SizedBox(height: 5),
-                          SizedBox(
-                            width: 30.w,
-                            child: CategoryTextWidget(
-                                text:
-                                    "Tracks : ${value.releases!.albums!.items![index].totalTracks.toString()}",
-                                fontSize: 15),
-                          ),
-                        ],
+                            SizedBox(height: 1.h),
+                            SizedBox(
+                              width: 30.w,
+                              child: CategoryTextWidget(
+                                  text: value
+                                      .releases!.albums!.items![index].name
+                                      .toString(),
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 14),
+                            ),
+                            const SizedBox(height: 5),
+                            SizedBox(
+                              width: 30.w,
+                              child: CategoryTextWidget(
+                                  text:
+                                      "Tracks : ${value.releases!.albums!.items![index].totalTracks.toString()}",
+                                  fontSize: 15),
+                            ),
+                          ],
+                        ),
                       ),
                     );
                   },
@@ -133,55 +142,62 @@ class Vvideoss extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return Padding(
                       padding: IPadding.homeSongs,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(
-                            width: 30.w,
-                            height: 15.h,
-                            child: Stack(
-                              fit: StackFit.loose,
-                              children: [
-                                Container(
-                                  width: 30.w,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(30),
-                                    image: DecorationImage(
-                                      fit: BoxFit.cover,
-                                      image: NetworkImage(value.several!
-                                          .artists![index].images![0].url
-                                          .toString()),
+                      child: GestureDetector(
+                        onTap: () {
+                          value.setAlbumsId(
+                            value.several!.artists![index].id.toString(),
+                          );
+                        },
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(
+                              width: 30.w,
+                              height: 15.h,
+                              child: Stack(
+                                fit: StackFit.loose,
+                                children: [
+                                  Container(
+                                    width: 30.w,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(30),
+                                      image: DecorationImage(
+                                        fit: BoxFit.cover,
+                                        image: NetworkImage(value.several!
+                                            .artists![index].images![0].url
+                                            .toString()),
+                                      ),
                                     ),
                                   ),
-                                ),
-                                Align(
-                                  alignment: Alignment.bottomRight,
-                                  child: CircleAvatar(
-                                    radius: 15,
-                                    backgroundColor: Icolor.homePlay,
-                                    child: Image.asset(Iimage.playbtn),
+                                  Align(
+                                    alignment: Alignment.bottomRight,
+                                    child: CircleAvatar(
+                                      radius: 15,
+                                      backgroundColor: Icolor.homePlay,
+                                      child: Image.asset(Iimage.playbtn),
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
-                          ),
-                          SizedBox(
-                            width: 30.w,
-                            child: CategoryTextWidget(
-                                text: value.several!.artists![index].name
-                                    .toString(),
-                                fontWeight: FontWeight.bold,
-                                fontSize: 16),
-                          ),
-                          const SizedBox(height: 5),
-                          SizedBox(
-                            width: 30.w,
-                            child: CategoryTextWidget(
-                                text: value.several!.artists![index].type
-                                    .toString(),
-                                fontSize: 15),
-                          ),
-                        ],
+                            SizedBox(
+                              width: 30.w,
+                              child: CategoryTextWidget(
+                                  text: value.several!.artists![index].name
+                                      .toString(),
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16),
+                            ),
+                            const SizedBox(height: 5),
+                            SizedBox(
+                              width: 30.w,
+                              child: CategoryTextWidget(
+                                  text: value.several!.artists![index].type
+                                      .toString(),
+                                  fontSize: 15),
+                            ),
+                          ],
+                        ),
                       ),
                     );
                   },
@@ -213,57 +229,66 @@ class Artists extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return Padding(
                       padding: IPadding.homeSongs,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(
-                            width: 30.w,
-                            height: 15.h,
-                            child: Stack(
-                              fit: StackFit.loose,
-                              children: [
-                                Container(
-                                  width: 30.w,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(30),
-                                    image: DecorationImage(
-                                      fit: BoxFit.cover,
-                                      image: NetworkImage(
-                                        value.releases!.albums!.items![index]
-                                            .images![0].url
-                                            .toString(),
+                      child: GestureDetector(
+                        onTap: () {
+                          value.setAlbumsId(
+                            value.several!.artists![index].id.toString(),
+                          );
+                        },
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(
+                              width: 30.w,
+                              height: 15.h,
+                              child: Stack(
+                                fit: StackFit.loose,
+                                children: [
+                                  Container(
+                                    width: 30.w,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(30),
+                                      image: DecorationImage(
+                                        fit: BoxFit.cover,
+                                        image: NetworkImage(
+                                          value.releases!.albums!.items![index]
+                                              .images![0].url
+                                              .toString(),
+                                        ),
                                       ),
                                     ),
                                   ),
-                                ),
-                                Align(
-                                  alignment: Alignment.bottomRight,
-                                  child: CircleAvatar(
-                                    radius: 15,
-                                    backgroundColor: Icolor.homePlay,
-                                    child: Image.asset(Iimage.playbtn),
+                                  Align(
+                                    alignment: Alignment.bottomRight,
+                                    child: CircleAvatar(
+                                      radius: 15,
+                                      backgroundColor: Icolor.homePlay,
+                                      child: Image.asset(Iimage.playbtn),
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
-                          ),
-                          SizedBox(
-                            width: 30.w,
-                            child: CategoryTextWidget(
-                                text: value.releases!.albums!.items![index].name
-                                    .toString(),
-                                fontWeight: FontWeight.bold,
-                                fontSize: 16),
-                          ),
-                          const SizedBox(height: 5),
-                          SizedBox(
-                            width: 30.w,
-                            child: CategoryTextWidget(
-                                text: value.releases!.albums!.items![index].name
-                                    .toString(),
-                                fontSize: 15),
-                          ),
-                        ],
+                            SizedBox(
+                              width: 30.w,
+                              child: CategoryTextWidget(
+                                  text: value
+                                      .releases!.albums!.items![index].name
+                                      .toString(),
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16),
+                            ),
+                            const SizedBox(height: 5),
+                            SizedBox(
+                              width: 30.w,
+                              child: CategoryTextWidget(
+                                  text: value
+                                      .releases!.albums!.items![index].name
+                                      .toString(),
+                                  fontSize: 15),
+                            ),
+                          ],
+                        ),
                       ),
                     );
                   },
@@ -295,57 +320,64 @@ class Podcasts extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return Padding(
                       padding: IPadding.homeSongs,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(
-                            width: 30.w,
-                            height: 15.h,
-                            child: Stack(
-                              fit: StackFit.loose,
-                              children: [
-                                Container(
-                                  width: 30.w,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(30),
-                                    image: DecorationImage(
-                                      fit: BoxFit.cover,
-                                      image: NetworkImage(
-                                        value.episodes.episodes![index]
-                                            .images![0].url
-                                            .toString(),
+                      child: GestureDetector(
+                        onTap: () {
+                          value.setAlbumsId(
+                            value.episodes.episodes![index].id!.toString(),
+                          );
+                        },
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(
+                              width: 30.w,
+                              height: 15.h,
+                              child: Stack(
+                                fit: StackFit.loose,
+                                children: [
+                                  Container(
+                                    width: 30.w,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(30),
+                                      image: DecorationImage(
+                                        fit: BoxFit.cover,
+                                        image: NetworkImage(
+                                          value.episodes.episodes![index]
+                                              .images![0].url
+                                              .toString(),
+                                        ),
                                       ),
                                     ),
                                   ),
-                                ),
-                                Align(
-                                  alignment: Alignment.bottomRight,
-                                  child: CircleAvatar(
-                                    radius: 15,
-                                    backgroundColor: Icolor.homePlay,
-                                    child: Image.asset(Iimage.playbtn),
+                                  Align(
+                                    alignment: Alignment.bottomRight,
+                                    child: CircleAvatar(
+                                      radius: 15,
+                                      backgroundColor: Icolor.homePlay,
+                                      child: Image.asset(Iimage.playbtn),
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
-                          ),
-                          SizedBox(
-                            width: 30.w,
-                            child: CategoryTextWidget(
-                                text: value.episodes.episodes![index].name
-                                    .toString(),
-                                fontWeight: FontWeight.bold,
-                                fontSize: 16),
-                          ),
-                          const SizedBox(height: 5),
-                          SizedBox(
-                            width: 30.w,
-                            child: CategoryTextWidget(
-                                text: value.episodes.episodes![index].name
-                                    .toString(),
-                                fontSize: 15),
-                          ),
-                        ],
+                            SizedBox(
+                              width: 30.w,
+                              child: CategoryTextWidget(
+                                  text: value.episodes.episodes![index].name
+                                      .toString(),
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16),
+                            ),
+                            const SizedBox(height: 5),
+                            SizedBox(
+                              width: 30.w,
+                              child: CategoryTextWidget(
+                                  text: value.episodes.episodes![index].name
+                                      .toString(),
+                                  fontSize: 15),
+                            ),
+                          ],
+                        ),
                       ),
                     );
                   },
