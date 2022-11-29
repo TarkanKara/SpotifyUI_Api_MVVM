@@ -11,8 +11,13 @@ import 'home_tabbar_view_widget.dart';
 class HomeListTileWidget extends StatelessWidget {
   const HomeListTileWidget({
     Key? key,
+    this.textPlayList,
+    this.textPlayListSubtitle,
+    this.textTimePlayList,
   }) : super(key: key);
-
+  final String? textPlayList;
+  final String? textPlayListSubtitle;
+  final String? textTimePlayList;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -25,24 +30,36 @@ class HomeListTileWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               CircleAvatar(
-                radius: 25,
+                radius: 20,
                 backgroundColor: Icolor.homeSongMusic,
                 child: Image.asset(Iimage.playbtn),
               ),
-              SizedBox(width: 4.h),
+              SizedBox(width: 2.5.h),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const CategoryTextWidget(
-                      text: "As It Was",
+                  SizedBox(
+                    width: 20.h,
+                    child: CategoryTextWidget(
+                      text: textPlayList!,
                       fontWeight: FontWeight.bold,
-                      fontSize: 20),
+                      fontSize: 1.8.h,
+                    ),
+                  ),
                   sizedBox2W(),
-                  const CategoryTextWidget(text: "Harry Styles"),
+                  SizedBox(
+                    width: 15.h,
+                    child: CategoryTextWidget(
+                      text: textPlayListSubtitle!,
+                    ),
+                  ),
                 ],
               ),
               sizedBox28W(),
-              const CategoryTextWidget(text: "5:33", fontSize: 16),
+              CategoryTextWidget(
+                text: textTimePlayList!,
+                fontSize: 16,
+              ),
               const SizedBox(width: 35),
               Image.asset(Iimage.heart),
             ],
@@ -53,6 +70,6 @@ class HomeListTileWidget extends StatelessWidget {
   }
 
   //SizedBox
-  SizedBox sizedBox28W() => SizedBox(width: 22.w);
-  SizedBox sizedBox2W() => SizedBox(height: 2.w);
+  SizedBox sizedBox28W() => SizedBox(width: 7.5.w);
+  SizedBox sizedBox2W() => SizedBox(height: 2.5.w);
 }

@@ -10,6 +10,7 @@ import 'package:provider/provider.dart';
 import '../../core/constant_color.dart';
 import '../../core/constant_image.dart';
 import '../../core/constant_padding.dart';
+import '../../utils/converting_timestamp.dart';
 import '../widgets/text_widget.dart';
 import 'home_banner_widget.dart';
 import 'home_list_tile_widget.dart';
@@ -30,6 +31,7 @@ class _HomePageState extends State<HomePage> {
     homeviewmodel.getDataNewReleasess();
     homeviewmodel.getDataSeveralArtis();
     homeviewmodel.getDataSeveralEpisodes();
+    homeviewmodel.getDataArtistsTopTracks();
     super.initState();
   }
 
@@ -49,10 +51,19 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             children: [
               SizedBox(height: 10.h),
-              const BannerWidget(),
+              Consumer<HomeViewModelProvider>(
+                builder: (context, value, child) {
+                  return BannerWidget(
+                    bannerText: value.releases!.albums!.items![0].name,
+                    bannerSubText:
+                        value.releases!.albums!.items![0].artists![0].name,
+                    imageUrl: value.releases!.albums!.items![0].images![0].url,
+                  );
+                },
+              ),
               sizedBox2H(),
               SizedBox(
-                height: 34.h,
+                height: 31.h,
                 child: ContainedTabBarView(
                   tabBarProperties: const TabBarProperties(
                     indicatorColor: Colors.green,
@@ -82,23 +93,36 @@ class _HomePageState extends State<HomePage> {
                   CategoryTextWidget(
                       text: "Playlist",
                       fontWeight: FontWeight.bold,
-                      fontSize: 16),
-                  CategoryTextWidget(text: "See more", fontSize: 15),
+                      fontSize: 18),
+                  CategoryTextWidget(text: "See more", fontSize: 16),
                 ],
               ),
               sizedBox2H(),
-              SizedBox(
-                width: 100.w,
-                child: ListView.builder(
-                  physics: const NeverScrollableScrollPhysics(),
-                  padding: EdgeInsets.zero,
-                  shrinkWrap: true,
-                  scrollDirection: Axis.vertical,
-                  itemCount: 5,
-                  itemBuilder: (context, index) {
-                    return const HomeListTileWidget();
-                  },
-                ),
+              Consumer<HomeViewModelProvider>(
+                builder: (context, value, child) {
+                  return SizedBox(
+                    width: 100.w,
+                    child: ListView.builder(
+                      physics: const NeverScrollableScrollPhysics(),
+                      padding: EdgeInsets.zero,
+                      shrinkWrap: true,
+                      scrollDirection: Axis.vertical,
+                      itemCount: value.topTracks.tracks!.length,
+                      itemBuilder: (context, index) {
+                        return HomeListTileWidget(
+                          textPlayList: value
+                              .topTracks.tracks![index].album!.name
+                              .toString(),
+                          textPlayListSubtitle: value
+                              .topTracks.tracks![index].album!.albumType
+                              .toString(),
+                          textTimePlayList: TimeStampt().currentTimestamp(
+                              value.topTracks.tracks![index].durationMs),
+                        );
+                      },
+                    ),
+                  );
+                },
               ),
             ],
           ),

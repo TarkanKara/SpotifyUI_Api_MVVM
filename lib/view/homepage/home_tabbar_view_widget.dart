@@ -84,13 +84,14 @@ class News extends StatelessWidget {
                               ],
                             ),
                           ),
+                          SizedBox(height: 1.h),
                           SizedBox(
                             width: 30.w,
                             child: CategoryTextWidget(
                                 text: value.releases!.albums!.items![index].name
                                     .toString(),
                                 fontWeight: FontWeight.bold,
-                                fontSize: 16),
+                                fontSize: 14),
                           ),
                           const SizedBox(height: 5),
                           SizedBox(
@@ -371,16 +372,15 @@ class CategoryTextWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(top: 0.1.h),
-      child: Center(
-        child: Text(
-          text,
-          maxLines: 2,
-          overflow: TextOverflow.ellipsis,
-          style: Theme.of(context)
-              .textTheme
-              .bodyMedium!
-              .copyWith(fontSize: fontSize, fontWeight: fontWeight),
-        ),
+      child: Text(
+        text,
+        maxLines: 1,
+        textAlign: TextAlign.start,
+        overflow: TextOverflow.ellipsis,
+        style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+              fontSize: fontSize,
+              fontWeight: fontWeight,
+            ),
       ),
     );
   }
