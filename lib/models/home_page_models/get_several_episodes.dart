@@ -1,3 +1,5 @@
+// ignore_for_file: void_checks
+
 class GetSeveralEpisodes {
   List<Episodes>? episodes;
 

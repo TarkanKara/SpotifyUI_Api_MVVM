@@ -1,4 +1,4 @@
-// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: non_constant_identifier_names, avoid_print
 
 import 'package:flutter/cupertino.dart';
 import 'package:new_spotifyui_api/models/home_page_models/get_artists_top_tracks.dart';
