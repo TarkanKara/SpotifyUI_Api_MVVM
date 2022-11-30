@@ -3,14 +3,18 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-import '../../core/constant_image.dart';
 import 'artics_text_widget.dart';
 
 class ArticsListViewWidget extends StatelessWidget {
   const ArticsListViewWidget({
     Key? key,
+    this.albumsName,
+    required this.aligment,
+    this.imageUrl,
   }) : super(key: key);
-
+  final String? albumsName;
+  final AlignmentGeometry? aligment;
+  final String? imageUrl;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -21,13 +25,22 @@ class ArticsListViewWidget extends StatelessWidget {
           Container(
             height: 14.h,
             width: 30.w,
-            decoration: const BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(26))),
-            child: Image.asset(Iimage.artics1),
+            decoration: BoxDecoration(
+              borderRadius: const BorderRadius.all(
+                Radius.circular(26),
+              ),
+              image: DecorationImage(
+                image: NetworkImage(imageUrl!),
+              ),
+            ),
+            /* child: Image.asset(Iimage.artics1), */
           ),
           sizedBox2H(),
-          const ArticsTextWidget(
-              text: "Lilbubblegum", fontWeight: FontWeight.bold),
+          Container(
+              alignment: aligment,
+              width: 15.h,
+              child: ArticsTextWidget(
+                  text: albumsName!, fontWeight: FontWeight.bold)),
         ],
       ),
     );

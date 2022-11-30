@@ -37,7 +37,7 @@ class HomeViewModelProvider with ChangeNotifier {
 
   getDataNewReleasess() async {
     isLoadingNewRelease = true;
-    releases = (await HomePageServices().getNewReleaseData())!;
+    releases = (await HomePageServices().getNewRelease())!;
     isLoadingNewRelease = false;
     notifyListeners();
   }

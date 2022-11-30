@@ -11,7 +11,13 @@ import 'artics_category_text_widget.dart';
 class ArticsListTileWidget extends StatelessWidget {
   const ArticsListTileWidget({
     Key? key,
+    this.songsName,
+    this.songSubName,
+    this.songsTime,
   }) : super(key: key);
+  final String? songsName;
+  final String? songSubName;
+  final String? songsTime;
 
   @override
   Widget build(BuildContext context) {
@@ -32,17 +38,23 @@ class ArticsListTileWidget extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const ArticsCategoryTextWidget(
-                    text: "As It Was",
+                ArticsCategoryTextWidget(
+                    text: songsName!,
                     fontWeight: FontWeight.bold,
                     fontSize: 16),
                 sizedBox2W(),
-                const ArticsCategoryTextWidget(text: "Harry Styles"),
+                ArticsCategoryTextWidget(text: songSubName!),
               ],
             ),
-            sizedBox28W(),
-            const ArticsCategoryTextWidget(text: "5:33", fontSize: 14),
-            const SizedBox(width: 35),
+            SizedBox(width: 2.w),
+            Text(
+              songsTime!,
+              style: Theme.of(context)
+                  .textTheme
+                  .bodyMedium!
+                  .copyWith(fontSize: 15, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(width: 10.w),
             Image.asset(Iimage.heart),
           ],
         ),
@@ -51,6 +63,6 @@ class ArticsListTileWidget extends StatelessWidget {
   }
 
   //SizedBox
-  SizedBox sizedBox28W() => SizedBox(width: 22.w);
+  SizedBox sizedBox28W() => SizedBox(width: 7.w);
   SizedBox sizedBox2W() => SizedBox(height: 2.w);
 }

@@ -11,7 +11,7 @@ import 'package:new_spotifyui_api/models/home_page_models/get_several_episodes.d
 
 class HomePageServices extends BaseServicesDio {
   //Get New Releases Models
-  Future<GetNewReleases?> getNewReleaseData() async {
+  Future<GetNewReleases?> getNewRelease() async {
     GetNewReleases getNewReleases;
     Response response;
     try {
@@ -74,7 +74,7 @@ class HomePageServices extends BaseServicesDio {
           queryParameters: {
             "market": "TR",
           });
-      print(response.data);
+      //print(response.data);
       return getArtistTopTracks = GetArtistTopTracks.fromJson(response.data);
     } catch (e) {
       log(e.toString());
