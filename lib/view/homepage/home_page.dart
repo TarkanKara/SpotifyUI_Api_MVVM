@@ -53,12 +53,15 @@ class _HomePageState extends State<HomePage> {
               SizedBox(height: 10.h),
               Consumer<HomeViewModelProvider>(
                 builder: (context, value, child) {
-                  return BannerWidget(
-                    bannerText: value.releases!.albums!.items![0].name,
-                    bannerSubText:
-                        value.releases!.albums!.items![0].artists![0].name,
-                    imageUrl: value.releases!.albums!.items![0].images![0].url,
-                  );
+                  return !value.isLoadingNewRelease
+                      ? BannerWidget(
+                          bannerText: value.releases!.albums!.items![0].name,
+                          bannerSubText: value
+                              .releases!.albums!.items![0].artists![0].name,
+                          imageUrl:
+                              value.releases!.albums!.items![0].images![0].url,
+                        )
+                      : const CircularProgressIndicator();
                 },
               ),
               sizedBox2H(),
@@ -100,28 +103,31 @@ class _HomePageState extends State<HomePage> {
               sizedBox2H(),
               Consumer<HomeViewModelProvider>(
                 builder: (context, value, child) {
-                  return SizedBox(
-                    width: 100.w,
-                    child: ListView.builder(
-                      physics: const NeverScrollableScrollPhysics(),
-                      padding: EdgeInsets.zero,
-                      shrinkWrap: true,
-                      scrollDirection: Axis.vertical,
-                      itemCount: value.topTracks.tracks!.length,
-                      itemBuilder: (context, index) {
-                        return HomeListTileWidget(
-                          textPlayList: value
-                              .topTracks.tracks![index].album!.name
-                              .toString(),
-                          textPlayListSubtitle: value
-                              .topTracks.tracks![index].album!.albumType
-                              .toString(),
-                          textTimePlayList: TimeStampt().currentTimestamp(
-                              value.topTracks.tracks![index].durationMs),
-                        );
-                      },
-                    ),
-                  );
+                  return !value.isLoadingTopTracks
+                      ? SizedBox(
+                          width: 100.w,
+                          child: ListView.builder(
+                            physics: const NeverScrollableScrollPhysics(),
+                            padding: EdgeInsets.zero,
+                            shrinkWrap: true,
+                            scrollDirection: Axis.vertical,
+                            itemCount: value.topTracks.tracks!.length,
+                            itemBuilder: (context, index) {
+                              return !value.isLoadingTopTracks
+                                  ? HomeListTileWidget(
+                                      textPlayList: value
+                                          .topTracks.tracks![index].album!.name,
+                                      textPlayListSubtitle: value.topTracks
+                                          .tracks![index].album!.albumType,
+                                      textTimePlayList: TimeStampt()
+                                          .currentTimestamp(value.topTracks
+                                              .tracks![index].durationMs),
+                                    )
+                                  : const CircularProgressIndicator();
+                            },
+                          ),
+                        )
+                      : const CircularProgressIndicator();
                 },
               ),
             ],

@@ -126,7 +126,7 @@ class _ArticsPageState extends State<ArticsPage> {
                   sizedBox2H(),
                   Consumer<HomeViewModelProvider>(
                     builder: (context, value, child) {
-                      return value.isLoadingTopTracks
+                      return !value.isLoadingTopTracks
                           ? ListView.builder(
                               shrinkWrap: true,
                               physics: const NeverScrollableScrollPhysics(),
@@ -134,7 +134,7 @@ class _ArticsPageState extends State<ArticsPage> {
                               scrollDirection: Axis.vertical,
                               itemCount: value.topTracks.tracks!.length,
                               itemBuilder: (context, index) {
-                                return value.isLoadingTopTracks
+                                return !value.isLoadingTopTracks
                                     ? ArticsListTileWidget(
                                         songsName: value.topTracks
                                             .tracks![index].album!.name,

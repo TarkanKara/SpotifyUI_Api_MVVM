@@ -10,7 +10,8 @@ import 'package:new_spotifyui_api/models/home_page_models/get_several_artist.dar
 import 'package:new_spotifyui_api/models/home_page_models/get_several_episodes.dart';
 
 class HomePageServices extends BaseServicesDio {
-  //Get New Releases Models
+  /* ---------------------------------------------------------------------------------- */
+  //Get New Releases
   Future<GetNewReleases?> getNewRelease() async {
     GetNewReleases getNewReleases;
     Response response;
@@ -28,6 +29,7 @@ class HomePageServices extends BaseServicesDio {
     return null;
   }
 
+/* ---------------------------------------------------------------------------------- */
   //Get Several Artists
   Future<GetSeveralArtist?> getSeveralArtists() async {
     GetSeveralArtist getSeveralArtist;
@@ -45,6 +47,7 @@ class HomePageServices extends BaseServicesDio {
     return null;
   }
 
+/* ---------------------------------------------------------------------------------- */
   //Get Several Episodes (Podcasts)
   Future<GetSeveralEpisodes?> getSeveralEpisodes() async {
     GetSeveralEpisodes getSeveralEpisodes;
@@ -62,6 +65,7 @@ class HomePageServices extends BaseServicesDio {
     return null;
   }
 
+/* ---------------------------------------------------------------------------------- */
   //Get Artists Top Tracks
   Future<GetArtistTopTracks?> getArtistTopTracks(
       {String? id_artistTopTracks}) async {
@@ -81,4 +85,5 @@ class HomePageServices extends BaseServicesDio {
     }
     return null;
   }
+  /* ---------------------------------------------------------------------------------- */
 }

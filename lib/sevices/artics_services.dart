@@ -9,7 +9,7 @@ import '../base/dio_client.dart';
 import 'package:dio/dio.dart';
 
 class ArtistsPageServices extends BaseServicesDio {
-  //
+/* ---------------------------------------------------------------------------------- */
   //Get Artists
   Future<GetArtist?> getArtists({String? id_artists}) async {
     GetArtist getArtist;
@@ -27,6 +27,7 @@ class ArtistsPageServices extends BaseServicesDio {
     return null;
   }
 
+/* ---------------------------------------------------------------------------------- */
   //Get Artists Albums
   Future<GetArtistsAlbums?> getArtistsAlbums({String? id_artistAlbumID}) async {
     GetArtistsAlbums getArtistsAlbums = GetArtistsAlbums();
@@ -41,11 +42,12 @@ class ArtistsPageServices extends BaseServicesDio {
             "limit": 10,
             "offset": 20,
           });
-      print(response.data);
+      //print(response.data);
       return getArtistsAlbums = GetArtistsAlbums.fromJson(response.data);
     } catch (e) {
       log(e.toString());
     }
     return null;
   }
+/* ---------------------------------------------------------------------------------- */
 }

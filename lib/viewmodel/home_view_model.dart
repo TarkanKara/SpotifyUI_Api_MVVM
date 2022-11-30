@@ -57,10 +57,10 @@ class HomeViewModelProvider with ChangeNotifier {
   }
 
   getDataArtistsTopTracks({String? userId}) async {
-    isLoadingTopTracks = false;
+    isLoadingTopTracks = true;
     topTracks = (await HomePageServices()
         .getArtistTopTracks(id_artistTopTracks: userId))!;
-    isLoadingTopTracks = true;
+    isLoadingTopTracks = false;
     //getDataArtistsTopTracks(userId: several!.artists![0].id);
     print(userId);
     notifyListeners();

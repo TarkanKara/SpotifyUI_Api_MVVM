@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:new_spotifyui_api/view/widgets/bottom_nav_bar.dart';
 import 'package:new_spotifyui_api/viewmodel/artics_view_model.dart';
 import 'package:new_spotifyui_api/viewmodel/home_view_model.dart';
+import 'package:new_spotifyui_api/viewmodel/profile_view_model.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:provider/provider.dart';
 
@@ -18,6 +19,9 @@ void main() => runApp(
           ),
           ChangeNotifierProvider<ArtistsViewModelProvider>(
             create: (context) => ArtistsViewModelProvider(),
+          ),
+          ChangeNotifierProvider<ProfileViewModelProvider>(
+            create: (context) => ProfileViewModelProvider(),
           ),
         ],
         child: const MyApp(),
