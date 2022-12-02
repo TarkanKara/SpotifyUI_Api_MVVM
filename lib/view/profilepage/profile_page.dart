@@ -47,14 +47,14 @@ class _ProfilePageState extends State<ProfilePage> {
           children: [
             Consumer<ProfileViewModelProvider>(
               builder: (context, value, child) {
-                return value.isLoadingUserPlayList == true
+                return !value.isLoadingUserPlayList
                     ? ProfileBanner(
-                        imageUrl: value.usersPlayList!.images![0].url!,
-                        profileName: "${value.usersPlayList!.displayName}",
-                        email: value.usersPlayList!.email ??
+                        imageUrl: value.usersPlayList.images![0].url!,
+                        profileName: "${value.usersPlayList.displayName}",
+                        email: value.usersPlayList.email ??
                             "Soroushnorozyui@gmail.com",
                         following:
-                            value.usersPlayList!.followers!.total.toString(),
+                            value.usersPlayList.followers!.total.toString(),
                         follow: "150",
                       )
                     : const CircularProgressIndicator();

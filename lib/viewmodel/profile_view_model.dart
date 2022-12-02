@@ -6,14 +6,14 @@ import 'package:new_spotifyui_api/sevices/profile_services.dart';
 
 class ProfileViewModelProvider with ChangeNotifier {
   //
-  GetUsersPlayList? usersPlayList = GetUsersPlayList();
+  GetUsersPlayList usersPlayList = GetUsersPlayList();
 
   bool isLoadingUserPlayList = false;
 
   getDataUsersPlayList({String? id_usersPlayList}) async {
     isLoadingUserPlayList = true;
-    usersPlayList = await ProfilePageServices()
-        .getUsersPlayList(id_usersPlayList: id_usersPlayList);
+    usersPlayList = (await ProfilePageServices()
+        .getUsersPlayList(id_usersPlayList: id_usersPlayList))!;
     isLoadingUserPlayList = false;
   }
 }
