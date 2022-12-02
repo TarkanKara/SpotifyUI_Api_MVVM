@@ -1,4 +1,4 @@
-class GetUsersPlayList {
+class GetUsersList {
   String? country;
   String? displayName;
   String? email;
@@ -12,7 +12,7 @@ class GetUsersPlayList {
   String? type;
   String? uri;
 
-  GetUsersPlayList(
+  GetUsersList(
       {this.country,
       this.displayName,
       this.email,
@@ -26,7 +26,7 @@ class GetUsersPlayList {
       this.type,
       this.uri});
 
-  GetUsersPlayList.fromJson(Map<String, dynamic> json) {
+  GetUsersList.fromJson(Map<String, dynamic> json) {
     country = json['country'];
     displayName = json['display_name'];
     email = json['email'];
