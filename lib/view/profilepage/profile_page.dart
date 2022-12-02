@@ -47,15 +47,14 @@ class _ProfilePageState extends State<ProfilePage> {
           children: [
             Consumer<ProfileViewModelProvider>(
               builder: (context, value, child) {
-                return value.isLoadingUserPlayList
+                return value.isLoadingUserPlayList == true
                     ? ProfileBanner(
-                        imageUrl: value.usersPlayList.images![0].url,
-                        profileName:
-                            value.usersPlayList.displayName ?? "Soroushnrz",
-                        email: value.usersPlayList.email ??
+                        imageUrl: value.usersPlayList!.images![0].url!,
+                        profileName: "${value.usersPlayList!.displayName}",
+                        email: value.usersPlayList!.email ??
                             "Soroushnorozyui@gmail.com",
                         following:
-                            value.usersPlayList.followers!.total.toString(),
+                            value.usersPlayList!.followers!.total.toString(),
                         follow: "150",
                       )
                     : const CircularProgressIndicator();
@@ -109,14 +108,17 @@ class _ProfilePageState extends State<ProfilePage> {
 class ProfileBanner extends StatelessWidget {
   const ProfileBanner({
     Key? key,
-    this.imageUrl,
-    this.email,
-    this.profileName,
-    this.follow,
-    this.following,
+    required this.imageUrl,
+    required this.email,
+    required this.profileName,
+    required this.follow,
+    required this.following,
   }) : super(key: key);
-  final String? imageUrl, profileName, email, follow, following;
-
+  final String imageUrl;
+  final String profileName;
+  final String email;
+  final String follow;
+  final String following;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -134,17 +136,13 @@ class ProfileBanner extends StatelessWidget {
           const Spacer(),
           CircleAvatar(
             radius: 50,
-            child: Image.network(imageUrl!),
-            /* Image.asset(
-              Iimage.profile,
-              fit: BoxFit.cover,
-            ), */
+            child: Image.network(imageUrl),
           ),
           sizedBox10H(),
-          ProfileTextWidget(text: email!, fontSize: 15),
+          ProfileTextWidget(text: email, fontSize: 15),
           sizedBox10H(),
           ProfileTextWidget(
-              text: profileName!, fontSize: 20, fontWeight: FontWeight.bold),
+              text: profileName, fontSize: 20, fontWeight: FontWeight.bold),
           sizedBox10H(),
           Padding(
             padding: IPadding.profilepage,
@@ -155,7 +153,7 @@ class ProfileBanner extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     ProfileTextWidget(
-                        text: follow!,
+                        text: follow,
                         fontSize: 20,
                         fontWeight: FontWeight.bold),
                     const ProfileTextWidget(text: "Followes", fontSize: 13),
@@ -165,7 +163,7 @@ class ProfileBanner extends StatelessWidget {
                 Column(
                   children: [
                     ProfileTextWidget(
-                        text: following!,
+                        text: following,
                         fontSize: 20,
                         fontWeight: FontWeight.bold),
                     const ProfileTextWidget(text: "Followes", fontSize: 13),

@@ -17,10 +17,9 @@ class ProfilePageServices extends BaseServicesDio {
           "users/${id_usersPlayList ?? "smedjan"}/playlists",
           queryParameters: {
             "limit": 10,
-            "offset": 10,
+            "offset": 0,
           });
       print(response.data);
-
       return getUsersPlayList = GetUsersPlayList.fromJson(response.data);
     } catch (e) {
       log(e.toString());
