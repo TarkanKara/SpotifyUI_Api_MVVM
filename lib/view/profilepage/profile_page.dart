@@ -1,6 +1,7 @@
 // ignore_for_file: depend_on_referenced_packages
 
 import 'package:flutter/material.dart';
+import 'package:new_spotifyui_api/core/constant_image.dart';
 import 'package:new_spotifyui_api/view/widgets/custom_app_bar.dart';
 import 'package:new_spotifyui_api/viewmodel/profile_view_model.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -23,7 +24,8 @@ class _ProfilePageState extends State<ProfilePage> {
   void initState() {
     final profileviewmodel =
         Provider.of<ProfileViewModelProvider>(context, listen: false);
-    profileviewmodel.getDataUsersPlayList();
+    profileviewmodel.getDataCurrentUsersProfile();
+    profileviewmodel.getDataUsersPlayLists();
     super.initState();
   }
 
@@ -73,13 +75,31 @@ class _ProfilePageState extends State<ProfilePage> {
             sizedBox10H(),
             Padding(
               padding: IPadding.profilPlayList2,
-              child: ListView.builder(
-                physics: const NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                padding: EdgeInsets.zero,
-                itemCount: 15,
-                itemBuilder: (context, index) {
-                  return const PublicPlayListWidget();
+              child: Consumer<ProfileViewModelProvider>(
+                builder: (context, value, child) {
+                  return ListView.builder(
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    padding: EdgeInsets.zero,
+                    itemCount: value.playLists.items!.length,
+                    itemBuilder: (context, index) {
+                      return !value.isLoadingUsersPlayLists
+                          ? PublicPlayListWidget(
+                              imageUrl: value.playLists.items![index].images!
+                                          .isEmpty ==
+                                      false
+                                  ? value.playLists.items![index].images![0].url
+                                  : Image.asset(Iimage.artics).toString(),
+                              playName: value.playLists.items![index].name,
+                              playSubName: value
+                                  .playLists.items![index].owner!.displayName,
+                              playSeconds: value
+                                  .playLists.items![index].tracks!.total
+                                  .toString(),
+                            )
+                          : const CircularProgressIndicator();
+                    },
+                  );
                 },
               ),
             )

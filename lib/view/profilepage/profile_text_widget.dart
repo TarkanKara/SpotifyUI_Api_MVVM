@@ -14,6 +14,8 @@ class ProfileTextWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
+      maxLines: 3,
+      overflow: TextOverflow.ellipsis,
       style: Theme.of(context)
           .textTheme
           .bodyMedium!
