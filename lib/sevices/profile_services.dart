@@ -4,23 +4,19 @@ import 'dart:developer';
 import 'package:dio/dio.dart';
 
 import 'package:new_spotifyui_api/base/dio_client.dart';
-import 'package:new_spotifyui_api/models/profile_page_models/get_users_list.dart';
+import 'package:new_spotifyui_api/models/profile_page_models/get_current_users_profile.dart';
 
 class ProfilePageServices extends BaseServicesDio {
   //
-  //Get Users Play List
-  Future<GetUsersList?> getUsersList({String? id_usersList}) async {
-    GetUsersList getUsersList = GetUsersList();
+  //Get Current User's Profile
+  Future<GetCurrentUsersProfile?> getCurrentUsersProfile() async {
+    GetCurrentUsersProfile getCurrentUsersProfile = GetCurrentUsersProfile();
     Response response;
     try {
-      final response = await dio.get(
-          "users/${id_usersList ?? "smedjan"}/playlists",
-          queryParameters: {
-            "limit": 10,
-            "offset": 0,
-          });
+      final response = await dio.get("me");
       print(response.data);
-      return getUsersList = GetUsersList.fromJson(response.data);
+      return getCurrentUsersProfile =
+          GetCurrentUsersProfile.fromJson(response.data);
     } catch (e) {
       log(e.toString());
     }

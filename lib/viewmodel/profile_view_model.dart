@@ -4,18 +4,17 @@ import 'package:flutter/widgets.dart';
 
 import 'package:new_spotifyui_api/sevices/profile_services.dart';
 
-import '../models/profile_page_models/get_users_list.dart';
+import '../models/profile_page_models/get_current_users_profile.dart';
 
 class ProfileViewModelProvider with ChangeNotifier {
   //
-  GetUsersList usersList = GetUsersList();
+  GetCurrentUsersProfile users = GetCurrentUsersProfile();
 
-  bool isLoadingUserList = false;
+  bool isLoadingCurrentUsersProfile = false;
 
-  getDataUsersPlayList({String? id_usersList}) async {
-    isLoadingUserList = true;
-    usersList = (await ProfilePageServices()
-        .getUsersList(id_usersList: id_usersList))!;
-    isLoadingUserList = false;
+  getDataUsersPlayList() async {
+    isLoadingCurrentUsersProfile = true;
+    users = (await ProfilePageServices().getCurrentUsersProfile())!;
+    isLoadingCurrentUsersProfile = false;
   }
 }

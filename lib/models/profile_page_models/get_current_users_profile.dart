@@ -1,4 +1,6 @@
-class GetUsersList {
+// ignore_for_file: prefer_collection_literals
+
+class GetCurrentUsersProfile {
   String? country;
   String? displayName;
   String? email;
@@ -12,7 +14,7 @@ class GetUsersList {
   String? type;
   String? uri;
 
-  GetUsersList(
+  GetCurrentUsersProfile(
       {this.country,
       this.displayName,
       this.email,
@@ -26,7 +28,7 @@ class GetUsersList {
       this.type,
       this.uri});
 
-  GetUsersList.fromJson(Map<String, dynamic> json) {
+  GetCurrentUsersProfile.fromJson(Map<String, dynamic> json) {
     country = json['country'];
     displayName = json['display_name'];
     email = json['email'];

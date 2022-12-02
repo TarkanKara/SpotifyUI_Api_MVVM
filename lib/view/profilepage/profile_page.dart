@@ -47,14 +47,12 @@ class _ProfilePageState extends State<ProfilePage> {
           children: [
             Consumer<ProfileViewModelProvider>(
               builder: (context, value, child) {
-                return !value.isLoadingUserList
+                return !value.isLoadingCurrentUsersProfile
                     ? ProfileBanner(
-                        imageUrl: value.usersList.images![0].url!,
-                        profileName: "${value.usersList.displayName}",
-                        email: value.usersList.email ??
-                            "Soroushnorozyui@gmail.com",
-                        following:
-                            value.usersList.followers!.total.toString(),
+                        imageUrl: value.users.images![0].url!,
+                        profileName: value.users.displayName!,
+                        email: value.users.email!,
+                        following: value.users.followers!.total.toString(),
                         follow: "150",
                       )
                     : const CircularProgressIndicator();
@@ -136,7 +134,9 @@ class ProfileBanner extends StatelessWidget {
           const Spacer(),
           CircleAvatar(
             radius: 50,
-            child: Image.network(imageUrl),
+            backgroundImage: NetworkImage(
+              imageUrl,
+            ),
           ),
           sizedBox10H(),
           ProfileTextWidget(text: email, fontSize: 15),
