@@ -1,22 +1,33 @@
 class SearchForItem {
+  Artists? artists;
   Tracks? tracks;
 
-  SearchForItem({this.tracks});
+  SearchForItem({this.artists, this.tracks});
 
-  SearchForItem.fromJson(Map<String, dynamic> json) {
+  SearchForItem.fromJson(Map<dynamic, dynamic> json) {
+    artists =
+        json['artists'] != null ? Artists.fromJson(json['artists']) : null;
     tracks = json['tracks'] != null ? Tracks.fromJson(json['tracks']) : null;
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
+    if (artists != null) {
+      data['artists'] = artists!.toJson();
+    }
     if (tracks != null) {
       data['tracks'] = tracks!.toJson();
     }
     return data;
   }
+
+  @override
+  SearchForItem fromJson(Map<dynamic, dynamic> json) {
+    return SearchForItem.fromJson(json);
+  }
 }
 
-class Tracks {
+class Artists {
   String? href;
   List<Items>? items;
   int? limit;
@@ -25,7 +36,7 @@ class Tracks {
   dynamic previous;
   int? total;
 
-  Tracks(
+  Artists(
       {this.href,
       this.items,
       this.limit,
@@ -34,7 +45,7 @@ class Tracks {
       this.previous,
       this.total});
 
-  Tracks.fromJson(Map<String, dynamic> json) {
+  Artists.fromJson(Map<String, dynamic> json) {
     href = json['href'];
     if (json['items'] != null) {
       items = <Items>[];
@@ -65,6 +76,179 @@ class Tracks {
 }
 
 class Items {
+  ExternalUrls? externalUrls;
+  Followers? followers;
+  List<String>? genres;
+  String? href;
+  String? id;
+  List<Images>? images;
+  String? name;
+  int? popularity;
+  String? type;
+  String? uri;
+
+  Items(
+      {this.externalUrls,
+      this.followers,
+      this.genres,
+      this.href,
+      this.id,
+      this.images,
+      this.name,
+      this.popularity,
+      this.type,
+      this.uri});
+
+  Items.fromJson(Map<String, dynamic> json) {
+    externalUrls = json['external_urls'] != null
+        ? ExternalUrls.fromJson(json['external_urls'])
+        : null;
+    followers = json['followers'] != null
+        ? Followers.fromJson(json['followers'])
+        : null;
+    genres = json['genres'].cast<String>();
+    href = json['href'];
+    id = json['id'];
+    if (json['images'] != null) {
+      images = <Images>[];
+      json['images'].forEach((v) {
+        images!.add(Images.fromJson(v));
+      });
+    }
+    name = json['name'];
+    popularity = json['popularity'];
+    type = json['type'];
+    uri = json['uri'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    if (externalUrls != null) {
+      data['external_urls'] = externalUrls!.toJson();
+    }
+    if (followers != null) {
+      data['followers'] = followers!.toJson();
+    }
+    data['genres'] = genres;
+    data['href'] = href;
+    data['id'] = id;
+    if (images != null) {
+      data['images'] = images!.map((v) => v.toJson()).toList();
+    }
+    data['name'] = name;
+    data['popularity'] = popularity;
+    data['type'] = type;
+    data['uri'] = uri;
+    return data;
+  }
+}
+
+class ExternalUrls {
+  String? spotify;
+
+  ExternalUrls({this.spotify});
+
+  ExternalUrls.fromJson(Map<String, dynamic> json) {
+    spotify = json['spotify'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['spotify'] = spotify;
+    return data;
+  }
+}
+
+class Followers {
+  dynamic href;
+  int? total;
+
+  Followers({this.href, this.total});
+
+  Followers.fromJson(Map<String, dynamic> json) {
+    href = json['href'];
+    total = json['total'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['href'] = href;
+    data['total'] = total;
+    return data;
+  }
+}
+
+class Images {
+  int? height;
+  String? url;
+  int? width;
+
+  Images({this.height, this.url, this.width});
+
+  Images.fromJson(Map<String, dynamic> json) {
+    height = json['height'];
+    url = json['url'];
+    width = json['width'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['height'] = height;
+    data['url'] = url;
+    data['width'] = width;
+    return data;
+  }
+}
+
+class Tracks {
+  String? href;
+  List<Items2>? items2;
+  int? limit;
+  String? next;
+  int? offset;
+  dynamic previous;
+  int? total;
+
+  Tracks(
+      {this.href,
+      this.items2,
+      this.limit,
+      this.next,
+      this.offset,
+      this.previous,
+      this.total});
+
+  Tracks.fromJson(Map<String, dynamic> json) {
+    href = json['href'];
+    if (json['items'] != null) {
+      items2 = <Items2>[];
+      json['items'].forEach((v) {
+        items2!.add(Items2.fromJson(v));
+      });
+    }
+    limit = json['limit'];
+    next = json['next'];
+    offset = json['offset'];
+    previous = json['previous'];
+    total = json['total'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['href'] = href;
+    if (items2 != null) {
+      data['items'] = items2!.map((v) => v.toJson()).toList();
+    }
+    data['limit'] = limit;
+    data['next'] = next;
+    data['offset'] = offset;
+    data['previous'] = previous;
+    data['total'] = total;
+    return data;
+  }
+}
+
+class Items2 {
   Album? album;
   List<Artists>? artists;
   int? discNumber;
@@ -83,7 +267,7 @@ class Items {
   String? type;
   String? uri;
 
-  Items(
+  Items2(
       {this.album,
       this.artists,
       this.discNumber,
@@ -102,7 +286,7 @@ class Items {
       this.type,
       this.uri});
 
-  Items.fromJson(Map<String, dynamic> json) {
+  Items2.fromJson(Map<String, dynamic> json) {
     album = json['album'] != null ? Album.fromJson(json['album']) : null;
     if (json['artists'] != null) {
       artists = <Artists>[];
@@ -237,80 +421,6 @@ class Album {
     data['total_tracks'] = totalTracks;
     data['type'] = type;
     data['uri'] = uri;
-    return data;
-  }
-}
-
-class Artists {
-  ExternalUrls? externalUrls;
-  String? href;
-  String? id;
-  String? name;
-  String? type;
-  String? uri;
-
-  Artists(
-      {this.externalUrls, this.href, this.id, this.name, this.type, this.uri});
-
-  Artists.fromJson(Map<String, dynamic> json) {
-    externalUrls = json['external_urls'] != null
-        ? ExternalUrls.fromJson(json['external_urls'])
-        : null;
-    href = json['href'];
-    id = json['id'];
-    name = json['name'];
-    type = json['type'];
-    uri = json['uri'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    if (externalUrls != null) {
-      data['external_urls'] = externalUrls!.toJson();
-    }
-    data['href'] = href;
-    data['id'] = id;
-    data['name'] = name;
-    data['type'] = type;
-    data['uri'] = uri;
-    return data;
-  }
-}
-
-class ExternalUrls {
-  String? spotify;
-
-  ExternalUrls({this.spotify});
-
-  ExternalUrls.fromJson(Map<String, dynamic> json) {
-    spotify = json['spotify'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['spotify'] = spotify;
-    return data;
-  }
-}
-
-class Images {
-  int? height;
-  String? url;
-  int? width;
-
-  Images({this.height, this.url, this.width});
-
-  Images.fromJson(Map<String, dynamic> json) {
-    height = json['height'];
-    url = json['url'];
-    width = json['width'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['height'] = height;
-    data['url'] = url;
-    data['width'] = width;
     return data;
   }
 }

@@ -55,7 +55,6 @@ class _SearchPageState extends State<SearchPage> {
                   SizedBox(
                     width: 39.5.h,
                     child: TextField(
-                      obscureText: true,
                       decoration: InputDecoration(
                         border: const OutlineInputBorder(
                             borderRadius:
