@@ -4,7 +4,7 @@ class GetUsersPlayLists {
   int? limit;
   String? next;
   int? offset;
-  dynamic? previous;
+  dynamic previous;
   int? total;
 
   GetUsersPlayLists(
@@ -55,7 +55,7 @@ class Items {
   List<Images>? images;
   String? name;
   Owner? owner;
-  dynamic? primaryColor;
+  dynamic primaryColor;
   bool? public;
   String? snapshotId;
   Tracks? tracks;
