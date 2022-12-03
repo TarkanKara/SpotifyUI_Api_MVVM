@@ -35,7 +35,7 @@ class ProfilePageServices extends BaseServicesDio {
             "limit": 20,
             "offset": 10,
           });
-      print(response.data);
+      //print(response.data);
       return getUsersPlayLists = GetUsersPlayLists.fromJson(response.data);
     } catch (e) {
       log(e.toString());
