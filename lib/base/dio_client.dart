@@ -8,7 +8,7 @@ class BaseServicesDio {
           baseUrl: "https://api.spotify.com/v1/",
           headers: {
             "Authorization":
-                "Bearer BQCdNbIuAzyTjd1QC9BPAHxmuGsOxqAaxY4OlAUwTCrC-mmvtmJj07Urqk74i3MwZd48Oc3T04oh6Fh-Ey3CnnBxioN9sNOMZyU-SeBRryHQTMp0r26Xcyz8Fzo_T1dQtq282IUlH18VgUqxEjAEUjY1kdbeZNBPQhRjucTLm5xx65mYEGhAJ62Y886yIU7yCnLp91NkTSIpnv8YYkDya5e8hqMUQCz62NjQRABM4ETrZgKm2XiUzCabgvE2yBpVL7imOYGd5M7n2ull0A2VitG5rzBQ1kVhlXmd0-uulj1J",
+                "Bearer BQCTt65nHXUww6I5JQ8RqaI3lgjvmRiQx2kvI72ojs7UEu3eBiFHln1p5x-696pRGJU-d8iNqF8DE0yzAV0taB4YgngknScltRyGdjUF94gxBFN3a2ZVmzze9btxfA7yWwcTeraVDjMFmowRvtLGg_Fo7LpPvBqLolzb8aKMt0BVefWtH1A8YukAUVbhKE5aCcO3GWCl-RI0V942ESjzPko7sWX3gYUgap7q7d6VKIApJK259T08IocBSGGdYfoxg6OpPHC50aYp9Zr7-0b063oZlh9KL08jYX5S9ZdxNaDu",
             "Content-Type": "application/json",
             "Accept": "application/json"
           },
