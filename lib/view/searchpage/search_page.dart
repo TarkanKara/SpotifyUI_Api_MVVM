@@ -23,6 +23,7 @@ class _SearchPageState extends State<SearchPage> {
     final searchViewModel =
         Provider.of<SearchViewModelProvider>(context, listen: false);
     searchViewModel.getDataSeveralBrowseCategories();
+
     super.initState();
   }
 
@@ -68,7 +69,8 @@ class _SearchPageState extends State<SearchPage> {
                   )
                 ],
               ),
-              SearchCategories()
+              SearchCategories(),
+              //SearchForItemWidget(),
             ],
           ),
         ),

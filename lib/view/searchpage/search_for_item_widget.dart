@@ -1,4 +1,4 @@
-// ignore_for_file: depend_on_referenced_packages
+// ignore_for_file: depend_on_referenced_packages, avoid_unnecessary_containers
 
 import 'package:flutter/material.dart';
 import 'package:new_spotifyui_api/view/searchpage/search_text_widget.dart';
@@ -39,8 +39,7 @@ class SearchForItemWidget extends StatelessWidget {
                             Container(
                               child: const CircleAvatar(
                                 radius: 50,
-                                backgroundImage:
-                                    AssetImage(Iimage.artics1),
+                                backgroundImage: AssetImage(Iimage.artics1),
                               ),
                             ),
                             const SearchTextWidget(text: "Name")
@@ -74,12 +73,10 @@ class SearchForItemWidget extends StatelessWidget {
                           radius: 50,
                           backgroundImage: AssetImage(Iimage.artics1),
                         ),
-                        title: SearchTextWidget(
-                            text: "Name", fontSize: 18),
-                        subtitle: SearchTextWidget(
-                            text: "SubName", fontSize: 18),
-                        trailing: SearchTextWidget(
-                            text: "00.30", fontSize: 18),
+                        title: SearchTextWidget(text: "Name", fontSize: 18),
+                        subtitle:
+                            SearchTextWidget(text: "SubName", fontSize: 18),
+                        trailing: SearchTextWidget(text: "00.30", fontSize: 18),
                       ),
                     );
                   },
