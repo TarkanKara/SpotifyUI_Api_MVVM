@@ -2,12 +2,35 @@
 
 import 'package:flutter/material.dart';
 import 'package:new_spotifyui_api/view/widgets/bottom_nav_bar.dart';
+import 'package:new_spotifyui_api/viewmodel/artics_view_model.dart';
+import 'package:new_spotifyui_api/viewmodel/home_view_model.dart';
+import 'package:new_spotifyui_api/viewmodel/profile_view_model.dart';
+import 'package:new_spotifyui_api/viewmodel/search_view_model.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
+import 'package:provider/provider.dart';
 
 import 'core/constant_color.dart';
 import 'view/homepage/home_page.dart';
 
-void main() => runApp(const MyApp());
+void main() => runApp(
+      MultiProvider(
+        providers: [
+          ChangeNotifierProvider<HomeViewModelProvider>(
+            create: (context) => HomeViewModelProvider(),
+          ),
+          ChangeNotifierProvider<ArtistsViewModelProvider>(
+            create: (context) => ArtistsViewModelProvider(),
+          ),
+          ChangeNotifierProvider<ProfileViewModelProvider>(
+            create: (context) => ProfileViewModelProvider(),
+          ),
+          ChangeNotifierProvider<SearchViewModelProvider>(
+            create: (context) => SearchViewModelProvider(),
+          ),
+        ],
+        child: const MyApp(),
+      ),
+    );
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
