@@ -48,6 +48,15 @@ $ flutter run
 ```
 This project is just for fun, but if you have any crazy idea for this app feel free to contribute, or create request for the features. Any contributions you make are greatly appreciated.
 
+**Screenshots:**
+<p align="center">
+<img src="screenshots/homePage.jpg" width="10%">
+<img src="screenshots/searchPage1.jpg" width="10%">
+<img src="screenshots/searchPage2.jpg" width="10%">
+<img src="screenshots/artistsPage.jpg" width="10%">
+<img src="screenshots/profilePage.jpg" width="10%">
+</p>
+
 # Contact me
 <a href="https://www.linkedin.com/in/tarkan-kara-999326176/">
 <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"/>
