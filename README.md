@@ -1,5 +1,5 @@
 # [Spotify Api UI](https://www.figma.com/file/G6y7N6LQX84auDjNqBFKay/Spotify-Redesign)
-Meet the new Spotify :v:
+:v: Meet the new Spotify :v:
 
 ## App Features.
 - Viewing playlist using [Spotify Api](https://developer.spotify.com/)
@@ -46,18 +46,18 @@ $ flutter pub get
 # Run the app
 $ flutter run
 ```
-This project is just for fun, but if you have any crazy idea for this app feel free to contribute, or create request for the features. Any contributions you make are greatly appreciated.
+:raising_hand: This project is just for fun, but if you have any crazy idea for this app feel free to contribute, or create request for the features. Any contributions you make are greatly appreciated.
 
 **Screenshots:**
 <p align="center">
-<img src="screenshots/homePage.jpg" width="10%">
-<img src="screenshots/searchPage1.jpg" width="10%">
-<img src="screenshots/searchPage2.jpg" width="10%">
-<img src="screenshots/artistsPage.jpg" width="10%">
-<img src="screenshots/profilePage.jpg" width="10%">
+<img src="screenshots/homePage.jpg" width="20%">
+<img src="screenshots/searchPage1.jpg" width="20%">
+<img src="screenshots/searchPage2.jpg" width="20%">
+<img src="screenshots/artistsPage.jpg" width="20%">
+<img src="screenshots/profilePage.jpg" width="20%">
 </p>
 
-# Contact me
+# Contact me :memo:
 <a href="https://www.linkedin.com/in/tarkan-kara-999326176/">
 <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"/>
 </a>
