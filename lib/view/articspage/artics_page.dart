@@ -15,7 +15,8 @@ import 'artics_list_view_widget.dart';
 import 'artics_text_widget.dart';
 
 class ArticsPage extends StatefulWidget {
-  const ArticsPage({super.key});
+  const ArticsPage({super.key, this.id});
+  final String? id;
 
   @override
   State<ArticsPage> createState() => _ArticsPageState();
@@ -26,10 +27,10 @@ class _ArticsPageState extends State<ArticsPage> {
   void initState() {
     final articsViewModel =
         Provider.of<ArtistsViewModelProvider>(context, listen: false);
-    articsViewModel.getDataArtists();
-    articsViewModel.getDataArtistsAlbums();
+    articsViewModel.getDataArtists(id_artists: widget.id);
+    articsViewModel.getDataArtistsAlbums(id_artistAlbumID: widget.id);
     Provider.of<HomeViewModelProvider>(context, listen: false)
-        .getDataArtistsTopTracks();
+        .getDataArtistsTopTracks(userId: widget.id);
     super.initState();
   }
 

@@ -8,6 +8,8 @@ import 'package:new_spotifyui_api/viewmodel/search_view_model.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:provider/provider.dart';
 
+import '../articspage/artics_page.dart';
+
 class SearchForItemWidget extends StatelessWidget {
   const SearchForItemWidget({
     Key? key,
@@ -39,35 +41,47 @@ class SearchForItemWidget extends StatelessWidget {
                             scrollDirection: Axis.horizontal,
                             itemCount: value.itemm.artists!.items!.length,
                             itemBuilder: (context, index) {
-                              return Padding(
-                                padding: EdgeInsets.all(1.w),
-                                child: SizedBox(
-                                  width: 80,
-                                  child: Column(
-                                    children: [
-                                      Container(
-                                        child: CircleAvatar(
-                                          radius: 50,
-                                          backgroundImage: NetworkImage(
-                                            value.itemm.artists!.items![index]
-                                                    .images!.isEmpty
-                                                ? Iimage.artics1
-                                                : value
-                                                    .itemm
-                                                    .artists!
-                                                    .items![index]
-                                                    .images![0]
-                                                    .url
-                                                    .toString(),
+                              return GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => ArticsPage(
+                                          id: value
+                                              .itemm.artists!.items![index].id,
+                                        ),
+                                      ));
+                                },
+                                child: Padding(
+                                  padding: EdgeInsets.all(1.w),
+                                  child: SizedBox(
+                                    width: 80,
+                                    child: Column(
+                                      children: [
+                                        Container(
+                                          child: CircleAvatar(
+                                            radius: 50,
+                                            backgroundImage: NetworkImage(
+                                              value.itemm.artists!.items![index]
+                                                      .images!.isEmpty
+                                                  ? Iimage.artics1
+                                                  : value
+                                                      .itemm
+                                                      .artists!
+                                                      .items![index]
+                                                      .images![0]
+                                                      .url
+                                                      .toString(),
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                      SearchTextWidget(
-                                        text: value
-                                            .itemm.artists!.items![index].name
-                                            .toString(),
-                                      ),
-                                    ],
+                                        SearchTextWidget(
+                                          text: value
+                                              .itemm.artists!.items![index].name
+                                              .toString(),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               );
