@@ -12,7 +12,7 @@ class SearchViewModelProvider with ChangeNotifier {
 
   bool isLoadingCategories = false;
   bool isLoadingSearch = false;
-  bool isController = false;
+  bool isController = true;
 
   getDataSeveralBrowseCategories() async {
     isLoadingCategories = true;

@@ -15,6 +15,8 @@ class SearchTextWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
+      maxLines: 1,
+      overflow: TextOverflow.ellipsis,
       style: Theme.of(context)
           .textTheme
           .bodyMedium!
